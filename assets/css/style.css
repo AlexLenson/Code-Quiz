@@ -1,6 +1,7 @@
 /* Declare CSS variables */
 :root {
     --button-background-purple: #381974;
+    --button-hover-purple: #BD5FE5;
 }
 
 /* * {
@@ -23,6 +24,7 @@ h2 {
 header {
     display: flex;
     justify-content: space-between;
+    margin: 10px;
 }
 
 
@@ -44,6 +46,12 @@ main p {
 button {
     background-color: var(--button-background-purple);
     color: white;
-    width: 100px;
+    padding: 3px 9px;
     border-radius: 5px;
+    border: 0;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--button-hover-purple);
 }
