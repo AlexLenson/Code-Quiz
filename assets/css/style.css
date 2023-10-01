@@ -48,8 +48,8 @@ header a {
 
 /* Toggle whether to show questions page */
 #questions-page {
-    display: flex;
-    /* display: none; */
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
@@ -88,6 +88,34 @@ header a {
 #results-page form {
     display: inline;
 }
+
+/* Toggle whether to show Highscores page */
+#highscores-page {
+    display: block;
+    /* display: none; */
+    text-align: left;
+    margin: 100px 700px;
+}
+
+#highscores-page h1 {
+    margin-bottom: 20px;
+}
+#highscores-page p {
+    margin: 10px auto;
+}
+
+#highscores-page button {
+    margin-top: 10px;
+}
+
+#clear-highscores-btn {
+    margin-left: 20px;
+}
+
+
+
+
+
 
 /* Make all buttons have background color purple with white text */
 button {
