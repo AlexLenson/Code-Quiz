@@ -63,7 +63,7 @@ button:hover {
 
 /* Toggle whether to show questions page */
 #questions-page {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
@@ -76,4 +76,19 @@ button:hover {
 
 #questions-page button {
     margin: 5px 0;
+}
+
+/* Toggle whether to show results page */
+#results-page {
+    display: block;
+    text-align: left;
+    margin: 100px 700px;
+}
+
+#results-page p {
+    margin: 20px 0;
+}
+
+#results-page form {
+    display: inline;
 }
