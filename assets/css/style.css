@@ -27,18 +27,21 @@ header {
     margin: 10px;
 }
 
+header a {
+    color: var(--button-background-purple);
+    text-decoration: none;
+}
 
-main {
-    display: flex;
+/* Toggle whether to show home page */
+#home-page {
+    display: none;
     flex-direction: column;
     align-items: center;
     text-align: center;
     margin: 100px 700px;
-    /* text-align: center;
-    margin: 100px 700px; */
 }
 
-main p {
+#home-page p {
     margin: 30px 10px 15px 10px;
 }
 
@@ -54,4 +57,23 @@ button {
 button:hover {
     cursor: pointer;
     background-color: var(--button-hover-purple);
+}
+
+
+
+/* Toggle whether to show questions page */
+#questions-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    margin: 100px 700px;
+}
+
+#questions-page h1 {
+    margin-bottom: 20px;
+}
+
+#questions-page button {
+    margin: 5px 0;
 }
