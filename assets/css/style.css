@@ -34,6 +34,7 @@ header a {
 
 /* Toggle whether to show home page */
 #home-page {
+    /* display: flex; */
     display: none;
     flex-direction: column;
     align-items: center;
@@ -45,25 +46,10 @@ header a {
     margin: 30px 10px 15px 10px;
 }
 
-/* Make all buttons have background color purple with white text */
-button {
-    background-color: var(--button-background-purple);
-    color: white;
-    padding: 3px 9px;
-    border-radius: 5px;
-    border: 0;
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: var(--button-hover-purple);
-}
-
-
-
 /* Toggle whether to show questions page */
 #questions-page {
-    display: none;
+    display: flex;
+    /* display: none; */
     flex-direction: column;
     align-items: flex-start;
     text-align: center;
@@ -78,9 +64,19 @@ button:hover {
     margin: 5px 0;
 }
 
+#questions-page footer {
+    margin: 10px 0;
+    padding-top: 10px;
+    color: grey;
+    border-top: 1px solid grey;
+    width: 400px;
+    text-align: left;
+}
+
 /* Toggle whether to show results page */
 #results-page {
-    display: block;
+    /* display: block; */
+    display: none;
     text-align: left;
     margin: 100px 700px;
 }
@@ -91,4 +87,18 @@ button:hover {
 
 #results-page form {
     display: inline;
+}
+
+/* Make all buttons have background color purple with white text */
+button {
+    background-color: var(--button-background-purple);
+    color: white;
+    padding: 3px 9px;
+    border-radius: 5px;
+    border: 0;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--button-hover-purple);
 }
