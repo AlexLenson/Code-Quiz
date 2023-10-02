@@ -7,7 +7,7 @@ var questions = [
     },
     {
         title: "Which of the following is a valid comment in JavaScript?",
-        choices: ["// This is a comment", "<!--This is a comment-->", "/*This is a comment*/", "#This is a comment"],
+        choices: ["// This is a comment", "!This is a comment", "/*This is a comment*/", "#This is a comment"],
         answer: "// This is a comment"
     },
     {
@@ -45,7 +45,8 @@ var count = 0;
 // Elements
 var startBtn = document.querySelector("#start-quiz-btn");
 var questionTitle = document.querySelector("#question-title");
-var answerChoices = document.querySelectorAll("#questions-page button")
+var answerChoices = document.querySelectorAll("#questions-page button");
+var answersContainer = document.querySelector("#answers-container");
 
 // Loads questions page
 function loadQuestionsPage() {
@@ -53,23 +54,27 @@ function loadQuestionsPage() {
     document.getElementById("questions-page").style.display = "flex";
     document.getElementById("results-page").style.display = "none";
     document.getElementById("highscores-page").style.display = "none";
-    getQuestion();
+    getQuestion(count);
 }
 
 // Gets a question and displays to page
-function getQuestion() {
-
-    currentQuestion = questions[count];
+function getQuestion(count) {
+    // console.log(`inside function: ${count}`);
+    var currentQuestion = questions[count];
     questionTitle.innerHTML = currentQuestion.title;
     
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         answerChoices[i].innerHTML = currentQuestion.choices[i];
     }
 
-    count++;
-    return count;
-
 }
+
+// Determines if correct answer was chosen
+// function correctAnswer () {
+
+// }
+
+
 
 
 // function to start timer and then call question function to generate the first question and answer buttons.
@@ -84,10 +89,24 @@ function getQuestion() {
 
 // Event listeners
 
+// Loads questions page
 startBtn.addEventListener("click", loadQuestionsPage);
 
+// Check if selected answer is correct and load next question
+answersContainer.addEventListener("click", function(event) {
+    var selectedAnswer = event.target;
+    var currentQuestion = questions[count];
+    // console.log(currentQuestion);
+    // console.log(`inside listener: ${count}`);
+
+    if (selectedAnswer.innerHTML === currentQuestion.answer) {
+        count++;
+        // console.log(`inside listener: ${count}`);
+        getQuestion(count);
+    }
 
 
+})
 
 
 

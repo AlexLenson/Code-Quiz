@@ -61,6 +61,12 @@ header a {
     text-align: left;
 }
 
+#answers-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
 #questions-page button {
     margin: 5px 0;
 }

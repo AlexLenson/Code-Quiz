@@ -6,7 +6,7 @@ var questions = [
     },
     {
         title: "Which of the following is a valid comment in JavaScript?",
-        choices: ["// This is a comment", "<!--This is a comment-->", "/*This is a comment*/", "#This is a comment"],
+        choices: ["// This is a comment", "!This is a comment", "/*This is a comment*/", "#This is a comment"],
         answer: "// This is a comment"
     },
     {
