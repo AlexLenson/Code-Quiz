@@ -41,6 +41,7 @@ var questions = [
 
 // Global variables
 var count = 0;
+var time = 60;
 
 // Elements
 var startBtn = document.querySelector("#start-quiz-btn");
@@ -116,16 +117,19 @@ answersContainer.addEventListener("click", function(event) {
     // console.log(currentQuestion);
     // console.log(`inside listener: ${count}`);
 
-    if (selectedAnswer.innerHTML === currentQuestion.answer) {
+    if (selectedAnswer.innerHTML === currentQuestion.answer && count < (questions.length - 1)) {
         // get next question
         count++;
         // console.log(`inside listener: ${count}`);
         getQuestion(count);
         displayCorrect();
-    } else {
+    } else if (selectedAnswer.innerHTML !== currentQuestion.answer && count < (questions.length - 1)) {
         // decrement timer by 10 sec
         // time-=10;
         displayIncorrect();
+    } else {
+        // get results page
+        console.log('get results page');
     }
 
 
