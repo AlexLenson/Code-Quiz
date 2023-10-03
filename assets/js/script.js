@@ -41,7 +41,7 @@ var questions = [
 
 // Global variables
 var count = 0;
-var time = 60;
+var timeLeft = 60;
 
 // Elements
 var startBtn = document.querySelector("#start-quiz-btn");
@@ -49,14 +49,16 @@ var questionTitle = document.querySelector("#question-title");
 var answerChoices = document.querySelectorAll("#questions-page button");
 var answersContainer = document.querySelector("#answers-container");
 var footerEL = document.querySelector("footer");
+var timeEl = document.querySelector("#time");
 
-// Loads questions page
+// Loads questions page and set timer
 function loadQuestionsPage() {
     document.getElementById("home-page").style.display = "none";
     document.getElementById("questions-page").style.display = "flex";
     document.getElementById("results-page").style.display = "none";
     document.getElementById("highscores-page").style.display = "none";
     getQuestion(count);
+    setTimer();
 }
 
 // Loads results page
@@ -101,7 +103,20 @@ function displayIncorrect() {
 }
 
 
+function setTimer() {
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        timeEl.textContent = "Time: " + timeLeft;
 
+        if (timeLeft === 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            // get results page
+            loadResultsPage();
+        }
+
+    }, 1000);
+}
 
 // function to start timer and then call question function to generate the first question and answer buttons.
 
