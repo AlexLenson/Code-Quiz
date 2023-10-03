@@ -117,10 +117,15 @@ answersContainer.addEventListener("click", function(event) {
     // console.log(`inside listener: ${count}`);
 
     if (selectedAnswer.innerHTML === currentQuestion.answer) {
+        // get next question
         count++;
         // console.log(`inside listener: ${count}`);
         getQuestion(count);
         displayCorrect();
+    } else {
+        // decrement timer by 10 sec
+        // time-=10;
+        displayIncorrect();
     }
 
 
