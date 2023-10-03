@@ -94,12 +94,6 @@ function displayIncorrect() {
 
 
 
-
-var hideFooter = setTimeout(function () {
-    footerEL.style.display = "none";
-}, 3000);
-
-
 // function to start timer and then call question function to generate the first question and answer buttons.
 
 // function to pull question from questions array and generate buttons with answers by looping over the answer arrays.   
