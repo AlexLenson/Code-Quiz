@@ -59,6 +59,14 @@ function loadQuestionsPage() {
     getQuestion(count);
 }
 
+// Loads results page
+function loadResultsPage() {
+    document.getElementById("home-page").style.display = "none";
+    document.getElementById("questions-page").style.display = "none";
+    document.getElementById("results-page").style.display = "block";
+    document.getElementById("highscores-page").style.display = "none";
+}
+
 // Gets a question and displays to page
 function getQuestion(count) {
     // console.log(`inside function: ${count}`);
@@ -129,7 +137,7 @@ answersContainer.addEventListener("click", function(event) {
         displayIncorrect();
     } else {
         // get results page
-        console.log('get results page');
+        loadResultsPage();
     }
 
 
