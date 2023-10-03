@@ -47,6 +47,7 @@ var startBtn = document.querySelector("#start-quiz-btn");
 var questionTitle = document.querySelector("#question-title");
 var answerChoices = document.querySelectorAll("#questions-page button");
 var answersContainer = document.querySelector("#answers-container");
+var footerEL = document.querySelector("footer");
 
 // Loads questions page
 function loadQuestionsPage() {
@@ -69,12 +70,34 @@ function getQuestion(count) {
 
 }
 
-// Determines if correct answer was chosen
-// function correctAnswer () {
+// Hides footer
+function hideFooter() {
+    footerEL.style.display = "none";
+}
 
-// }
+// Displays "Correct" in footer
+function displayCorrect() {
+    footerEL.style.display = "block";
+    footerEL.innerHTML = "Correct";
+    footerEL.style.color = "green";
+    setTimeout(hideFooter, 3000);
+}
+
+// Displays "Incorrect" in footer
+function displayIncorrect() {
+    footerEL.style.display = "block";
+    footerEL.innerHTML = "Incorrect";
+    footerEL.style.color = "red";
+    setTimeout(hideFooter, 3000);
+}
 
 
+
+
+
+var hideFooter = setTimeout(function () {
+    footerEL.style.display = "none";
+}, 3000);
 
 
 // function to start timer and then call question function to generate the first question and answer buttons.
@@ -103,6 +126,7 @@ answersContainer.addEventListener("click", function(event) {
         count++;
         // console.log(`inside listener: ${count}`);
         getQuestion(count);
+        displayCorrect();
     }
 
 
