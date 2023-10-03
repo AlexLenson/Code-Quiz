@@ -52,6 +52,7 @@ var answersContainer = document.querySelector("#answers-container");
 var footerEL = document.querySelector("footer");
 var timeEl = document.querySelector("#time");
 var scoreEl = document.querySelector("#score");
+var submitBtn = document.querySelector("#submit-btn");
 
 // Loads questions page and set timer
 function loadQuestionsPage() {
@@ -69,6 +70,14 @@ function loadResultsPage() {
     document.getElementById("questions-page").style.display = "none";
     document.getElementById("results-page").style.display = "block";
     document.getElementById("highscores-page").style.display = "none";
+}
+
+// Load highscores page and store highscores in local storage
+function loadHighscoresPage() {
+    document.getElementById("home-page").style.display = "none";
+    document.getElementById("questions-page").style.display = "none";
+    document.getElementById("results-page").style.display = "none";
+    document.getElementById("highscores-page").style.display = "block";
 }
 
 // Sets timer
@@ -129,6 +138,10 @@ function displayIncorrect() {
 }
 
 
+
+
+
+
 // function to start timer and then call question function to generate the first question and answer buttons.
 
 // function to pull question from questions array and generate buttons with answers by looping over the answer arrays.   
@@ -167,5 +180,6 @@ answersContainer.addEventListener("click", function(event) {
     }
 })
 
-
+// when submit button is clicked, load highscores into local storage and display on highscores page
+submitBtn.addEventListener("click", loadHighscoresPage);
 
