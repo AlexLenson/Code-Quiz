@@ -51,6 +51,7 @@ var answerChoices = document.querySelectorAll("#questions-page button");
 var answersContainer = document.querySelector("#answers-container");
 var footerEL = document.querySelector("footer");
 var timeEl = document.querySelector("#time");
+var scoreEl = document.querySelector("#score");
 
 // Loads questions page and set timer
 function loadQuestionsPage() {
@@ -83,11 +84,12 @@ function setTimer() {
             timeLeft = 0;
             timeEl.textContent = "Time: " + timeLeft;
             score = timeLeft;
+            scoreEl.textContent = "Your final score is " + score + ".";
         } else if (count === (questions.length - 1)) {
             // stop timer and set time remaining as score
             clearInterval(timerInterval);
             score = timeLeft;
-            console.log(score);
+            scoreEl.textContent = "Your final score is " + score + ".";
         }
 
     }, 1000);
