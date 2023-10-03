@@ -42,6 +42,7 @@ var questions = [
 // Global variables
 var count = 0;
 var timeLeft = 60;
+var score = 0;
 
 // Elements
 var startBtn = document.querySelector("#start-quiz-btn");
@@ -67,6 +68,29 @@ function loadResultsPage() {
     document.getElementById("questions-page").style.display = "none";
     document.getElementById("results-page").style.display = "block";
     document.getElementById("highscores-page").style.display = "none";
+}
+
+// Sets timer
+function setTimer() {
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        timeEl.textContent = "Time: " + timeLeft;
+
+        if (timeLeft === 0 || timeLeft < 0) {
+            clearInterval(timerInterval);
+            // get results page
+            loadResultsPage();
+            timeLeft = 0;
+            timeEl.textContent = "Time: " + timeLeft;
+            score = timeLeft;
+        } else if (count === (questions.length - 1)) {
+            // stop timer and set time remaining as score
+            clearInterval(timerInterval);
+            score = timeLeft;
+            console.log(score);
+        }
+
+    }, 1000);
 }
 
 // Gets a question and displays to page
@@ -103,21 +127,6 @@ function displayIncorrect() {
 }
 
 
-function setTimer() {
-    var timerInterval = setInterval(function () {
-        timeLeft--;
-        timeEl.textContent = "Time: " + timeLeft;
-
-        if (timeLeft === 0) {
-            // Stops execution of action at set interval
-            clearInterval(timerInterval);
-            // get results page
-            loadResultsPage();
-        }
-
-    }, 1000);
-}
-
 // function to start timer and then call question function to generate the first question and answer buttons.
 
 // function to pull question from questions array and generate buttons with answers by looping over the answer arrays.   
@@ -148,14 +157,12 @@ answersContainer.addEventListener("click", function(event) {
         displayCorrect();
     } else if (selectedAnswer.innerHTML !== currentQuestion.answer && count < (questions.length - 1)) {
         // decrement timer by 10 sec
-        // time-=10;
+        timeLeft-=10;
         displayIncorrect();
     } else {
         // get results page
         loadResultsPage();
     }
-
-
 })
 
 
