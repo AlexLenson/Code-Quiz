@@ -114,7 +114,6 @@ function setTimer() {
 
 // Gets a question and displays to page
 function getQuestion(count) {
-    // console.log(`inside function: ${count}`);
     var currentQuestion = questions[count];
     questionTitle.innerHTML = currentQuestion.title;
     
@@ -152,12 +151,9 @@ function displayNoBlanksMessage() {
 // Store highscores in local storage
 function storeHighscores() {
     var initials = initialsInput.value;
-    // console.log(initials);
-    // console.log(score);
     if (initials === "") {
         displayNoBlanksMessage();
     } else {
-        // displaySubmittedMessage();
         initialsInput.value = "";
         var player = {
             initials: initials,
@@ -170,13 +166,12 @@ function storeHighscores() {
     }
 }
 
+// get scores from local storage
 function retrieveHighscores() {
     var storedScores = JSON.parse(localStorage.getItem("scores"));
-    // console.log(storedScores);
 
     if (storedScores !== null) {
         scores = storedScores;
-        // console.log(scores);
     }
     displayHighscores()
 }
@@ -210,13 +205,10 @@ startBtn.addEventListener("click", loadQuestionsPage);
 answersContainer.addEventListener("click", function(event) {
     var selectedAnswer = event.target;
     var currentQuestion = questions[count];
-    // console.log(currentQuestion);
-    // console.log(`inside listener: ${count}`);
 
     if (selectedAnswer.innerHTML === currentQuestion.answer && count < (questions.length - 1)) {
         // get next question
         count++;
-        // console.log(`inside listener: ${count}`);
         getQuestion(count);
         displayCorrect();
     } else if (selectedAnswer.innerHTML !== currentQuestion.answer && count < (questions.length - 1)) {
@@ -231,11 +223,11 @@ answersContainer.addEventListener("click", function(event) {
 
 // when submit button is clicked, load highscores into local storage and display on highscores page
 submitBtn.addEventListener("click", function(event) {
-    // console.log(event.target);
     event.preventDefault();
     storeHighscores();
 });
 
+// when go back button is clicked, load homepage 
 goBackBtn.addEventListener("click", function(event) {
     count = 0;
     timeLeft = 60;
@@ -243,12 +235,14 @@ goBackBtn.addEventListener("click", function(event) {
     loadHomePage();
 });
 
+// when clear highscores button is clicked, clear highscores from list and local storage
 clearHighscoresBtn.addEventListener("click", function(event) {
     highscoresListEl.innerHTML = "";
     localStorage.clear();
     scores = [];
 })
 
+// when view highscores is clicked, loads highscores page and stops timer
 viewHighscoresEl.addEventListener("click", function(event) {
     loadHighscoresPage();
     clearInterval(timerInterval);
