@@ -44,6 +44,7 @@ var count = 0;
 var timeLeft = 60;
 var score = 0;
 var scores = [];
+var timerInterval;
 
 // Elements
 var startBtn = document.querySelector("#start-quiz-btn");
@@ -59,7 +60,17 @@ var resultsFooterEL = document.querySelector("#results-footer");
 var goBackBtn = document.querySelector("#go-back-btn");
 var highscoresListEl = document.querySelector("#highscores-list");
 var clearHighscoresBtn = document.querySelector("#clear-highscores-btn");
+var viewHighscoresEl = document.querySelector("#view-highscores");
 
+
+// Loads home page
+function loadHomePage() {
+    document.getElementById("home-page").style.display = "flex";
+    document.getElementById("questions-page").style.display = "none";
+    document.getElementById("results-page").style.display = "none";
+    document.getElementById("highscores-page").style.display = "none";
+    viewHighscoresEl.style.visibility = "visible";
+}
 
 // Loads questions page and set timer
 function loadQuestionsPage() {
@@ -67,6 +78,7 @@ function loadQuestionsPage() {
     document.getElementById("questions-page").style.display = "flex";
     document.getElementById("results-page").style.display = "none";
     document.getElementById("highscores-page").style.display = "none";
+    viewHighscoresEl.style.visibility = "visible";
     getQuestion(count);
     setTimer();
 }
@@ -77,6 +89,7 @@ function loadResultsPage() {
     document.getElementById("questions-page").style.display = "none";
     document.getElementById("results-page").style.display = "block";
     document.getElementById("highscores-page").style.display = "none";
+    viewHighscoresEl.style.visibility = "visible";
 }
 
 // Load highscores page
@@ -85,11 +98,12 @@ function loadHighscoresPage() {
     document.getElementById("questions-page").style.display = "none";
     document.getElementById("results-page").style.display = "none";
     document.getElementById("highscores-page").style.display = "block";
+    viewHighscoresEl.style.visibility = "hidden";
 }
 
 // Sets timer
 function setTimer() {
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timeLeft--;
         timeEl.textContent = "Time: " + timeLeft;
 
@@ -266,11 +280,18 @@ submitBtn.addEventListener("click", function(event) {
 goBackBtn.addEventListener("click", function(event) {
     count = 0;
     timeLeft = 60;
-    loadQuestionsPage();
+    timeEl.textContent = "";
+    loadHomePage();
 });
 
 clearHighscoresBtn.addEventListener("click", function(event) {
     highscoresListEl.innerHTML = "";
     localStorage.clear();
     scores = [];
+})
+
+viewHighscoresEl.addEventListener("click", function(event) {
+    loadHighscoresPage();
+    clearInterval(timerInterval);
+    timeEl.textContent = "";
 })
