@@ -27,18 +27,6 @@ var questions = [
     }
 ];
 
-
-
-// start by setting the variables to keep track of game state
-// currentQuesiton
-// timeRemaining
-
-//  Declare your dom elements such as
-// submit button dom Element
-// timer Element
-// score
-
-
 // Global variables
 var count = 0;
 var timeLeft = 60;
@@ -61,7 +49,6 @@ var goBackBtn = document.querySelector("#go-back-btn");
 var highscoresListEl = document.querySelector("#highscores-list");
 var clearHighscoresBtn = document.querySelector("#clear-highscores-btn");
 var viewHighscoresEl = document.querySelector("#view-highscores");
-
 
 // Loads home page
 function loadHomePage() {
@@ -134,7 +121,6 @@ function getQuestion(count) {
     for (let i = 0; i < currentQuestion.choices.length; i++) {
         answerChoices[i].innerHTML = currentQuestion.choices[i];
     }
-
 }
 
 // Hides questions footer
@@ -158,27 +144,10 @@ function displayIncorrect() {
     setTimeout(hideQuestionsFooter, 3000);
 }
 
-
-// // Hides results footer
-// function hideResultsFooter() {
-//     resultsFooterEL.style.display = "none";
-// }
-
-// // Shows results footer
-// function showResultsFooter() {
-//     resultsFooterEL.style.display = "block";
-// }
-
 function displayNoBlanksMessage() {
     resultsFooterEL.style.display = "block";
     resultsFooterEL.innerHTML = "Initials cannot be blank"
 }
-
-// function displaySubmittedMessage() {
-//     resultsFooterEL.style.display = "block";
-//     resultsFooterEL.innerHTML = "Highscore successfully submitted"
-// }
-
 
 // Store highscores in local storage
 function storeHighscores() {
@@ -230,16 +199,6 @@ function displayHighscores() {
         highscoresListEl.appendChild(li);
     }
 }
-
-
-// function to start timer and then call question function to generate the first question and answer buttons.
-
-// function to pull question from questions array and generate buttons with answers by looping over the answer arrays.   
-
-// event function to grab the value of the button clicked and compare to answer.  If same recall question function for the next question, else decrement timer and recall question function for next question
-
-// function to end quiz and capture time remaining as high score.  Store the highscores in local storage.  Dont forget to format the data coming back from high scores in descending order
-
 
 
 // Event listeners
