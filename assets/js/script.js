@@ -202,20 +202,17 @@ function retrieveHighscores() {
 function displayHighscores() {
     // delete all li so that duplicates are not created
     highscoresListEl.innerHTML = "";
+
+    // sort array in decending order based on score before appending to list
+    scores.sort((a, b) => b.score - a.score);
+    console.log(scores);
+
     // create a new li for each highscore
     for (var i = 0; i < scores.length; i++) {
         var highscore = scores[i];
-        // console.log(highscore);
-        // console.log(typeof(highscore));
-
+        var rank = i + 1;
         var li = document.createElement("li");
-        li.innerHTML = highscore.initials + " - " + highscore.score;
-        // li.setAttribute("data-index", i);
-
-        // var button = document.createElement("button");
-        // button.textContent = "Complete ✔️";
-
-        // li.appendChild(button);
+        li.innerHTML = rank + ". " + highscore.initials + " - " + highscore.score;
         highscoresListEl.appendChild(li);
     }
 }
