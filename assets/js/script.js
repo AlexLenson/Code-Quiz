@@ -57,6 +57,7 @@ var submitBtn = document.querySelector("#submit-btn");
 var initialsInput = document.querySelector("#initials");
 var resultsFooterEL = document.querySelector("#results-footer");
 var goBackBtn = document.querySelector("#go-back-btn");
+var highscoresListEl = document.querySelector("#highscores-list");
 
 
 
@@ -188,10 +189,36 @@ function storeHighscores() {
 
 function retrieveHighscores() {
     var storedScores = JSON.parse(localStorage.getItem("scores"));
-    console.log(storedScores);
+    // console.log(storedScores);
+
+    if (storedScores !== null) {
+        scores = storedScores;
+        // console.log(scores);
+    }
+    displayHighscores()
 }
 
+// creates a new <li> for each new highscore
+function displayHighscores() {
+    // delete all li so that duplicates are not created
+    highscoresListEl.innerHTML = "";
+    // create a new li for each highscore
+    for (var i = 0; i < scores.length; i++) {
+        var highscore = scores[i];
+        // console.log(highscore);
+        // console.log(typeof(highscore));
 
+        var li = document.createElement("li");
+        li.innerHTML = highscore.initials + " - " + highscore.score;
+        // li.setAttribute("data-index", i);
+
+        // var button = document.createElement("button");
+        // button.textContent = "Complete ✔️";
+
+        // li.appendChild(button);
+        highscoresListEl.appendChild(li);
+    }
+}
 
 
 // function to start timer and then call question function to generate the first question and answer buttons.
