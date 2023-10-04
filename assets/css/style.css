@@ -2,12 +2,8 @@
 :root {
     --button-background-purple: #381974;
     --button-hover-purple: #BD5FE5;
+    --highscores-background-purple: #D9D3E9;
 }
-
-/* * {
-    font-family: 'Trebuchet MS', 'Helvetica', 'sans-serif';
-} */
-
 
 /* h1 font size */
 h1 {
@@ -18,7 +14,6 @@ h1 {
 h2 {
     font-size: 200%;
 }
-
 
 /* Header section is a flexbox */
 header {
@@ -130,20 +125,13 @@ header a {
     margin-left: 20px;
 }
 
+#highscores-list li {
+    padding: 10px 0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#highscores-list li:nth-child(odd) {
+    background-color: var(--highscores-background-purple);
+}
 
 /* Make all buttons have background color purple with white text */
 button {
