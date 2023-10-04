@@ -168,8 +168,8 @@ function displayNoBlanksMessage() {
 // Store highscores in local storage
 function storeHighscores() {
     var initials = initialsInput.value;
-    console.log(initials);
-    console.log(score);
+    // console.log(initials);
+    // console.log(score);
     if (initials === "") {
         displayNoBlanksMessage();
     } else {
@@ -182,10 +182,16 @@ function storeHighscores() {
         scores.push(player);
         localStorage.setItem("scores", JSON.stringify(scores));
         loadHighscoresPage();
+        retrieveHighscores();
     }
-
-    
 }
+
+function retrieveHighscores() {
+    var storedScores = JSON.parse(localStorage.getItem("scores"));
+    console.log(storedScores);
+}
+
+
 
 
 // function to start timer and then call question function to generate the first question and answer buttons.
