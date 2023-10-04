@@ -43,16 +43,20 @@ var questions = [
 var count = 0;
 var timeLeft = 60;
 var score = 0;
+var scores = [];
 
 // Elements
 var startBtn = document.querySelector("#start-quiz-btn");
 var questionTitle = document.querySelector("#question-title");
 var answerChoices = document.querySelectorAll("#questions-page button");
 var answersContainer = document.querySelector("#answers-container");
-var footerEL = document.querySelector("footer");
+var questionsFooterEL = document.querySelector("#questions-footer");
 var timeEl = document.querySelector("#time");
 var scoreEl = document.querySelector("#score");
 var submitBtn = document.querySelector("#submit-btn");
+var initialsInput = document.querySelector("#initials");
+var resultsFooterEL = document.querySelector("#results-footer");
+
 
 // Loads questions page and set timer
 function loadQuestionsPage() {
@@ -72,7 +76,7 @@ function loadResultsPage() {
     document.getElementById("highscores-page").style.display = "none";
 }
 
-// Load highscores page and store highscores in local storage
+// Load highscores page
 function loadHighscoresPage() {
     document.getElementById("home-page").style.display = "none";
     document.getElementById("questions-page").style.display = "none";
@@ -116,30 +120,69 @@ function getQuestion(count) {
 
 }
 
-// Hides footer
-function hideFooter() {
-    footerEL.style.display = "none";
+// Hides questions footer
+function hideQuestionsFooter() {
+    questionsFooterEL.style.display = "none";
 }
 
 // Displays "Correct" in footer
 function displayCorrect() {
-    footerEL.style.display = "block";
-    footerEL.innerHTML = "Correct";
-    footerEL.style.color = "green";
-    setTimeout(hideFooter, 3000);
+    questionsFooterEL.style.display = "block";
+    questionsFooterEL.innerHTML = "Correct";
+    questionsFooterEL.style.color = "green";
+    setTimeout(hideQuestionsFooter, 3000);
 }
 
 // Displays "Incorrect" in footer
 function displayIncorrect() {
-    footerEL.style.display = "block";
-    footerEL.innerHTML = "Incorrect";
-    footerEL.style.color = "red";
-    setTimeout(hideFooter, 3000);
+    questionsFooterEL.style.display = "block";
+    questionsFooterEL.innerHTML = "Incorrect";
+    questionsFooterEL.style.color = "red";
+    setTimeout(hideQuestionsFooter, 3000);
 }
 
 
+// // Hides results footer
+// function hideResultsFooter() {
+//     resultsFooterEL.style.display = "none";
+// }
+
+// // Shows results footer
+// function showResultsFooter() {
+//     resultsFooterEL.style.display = "block";
+// }
+
+function displayNoBlanksMessage() {
+    resultsFooterEL.style.display = "block";
+    resultsFooterEL.innerHTML = "Initials cannot be blank"
+}
+
+// function displaySubmittedMessage() {
+//     resultsFooterEL.style.display = "block";
+//     resultsFooterEL.innerHTML = "Highscore successfully submitted"
+// }
 
 
+// Store highscores in local storage
+function storeHighscores() {
+    var initials = initialsInput.value;
+    console.log(initials);
+    console.log(score);
+    if (initials === "") {
+        displayNoBlanksMessage();
+    } else {
+        // displaySubmittedMessage();
+        var player = {
+            initials: initials,
+            score: score
+        }
+        scores.push(player);
+        localStorage.setItem("scores", JSON.stringify(scores));
+        loadHighscoresPage();
+    }
+
+    
+}
 
 
 // function to start timer and then call question function to generate the first question and answer buttons.
@@ -181,5 +224,9 @@ answersContainer.addEventListener("click", function(event) {
 })
 
 // when submit button is clicked, load highscores into local storage and display on highscores page
-submitBtn.addEventListener("click", loadHighscoresPage);
+submitBtn.addEventListener("click", function(event) {
+    // console.log(event.target);
+    event.preventDefault();
+    storeHighscores();
+});
 

@@ -97,6 +97,16 @@ header a {
     display: inline;
 }
 
+#results-page footer {
+    display: none;
+    margin: 10px 0;
+    padding-top: 10px;
+    color: grey;
+    border-top: 1px solid grey;
+    width: 400px;
+    text-align: left;
+}
+
 /* Toggle whether to show Highscores page */
 #highscores-page {
     /* display: block; */
