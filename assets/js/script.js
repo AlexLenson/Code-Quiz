@@ -183,7 +183,6 @@ function displayHighscores() {
 
     // sort array in decending order based on score before appending to list
     scores.sort((a, b) => b.score - a.score);
-    console.log(scores);
 
     // create a new li for each highscore
     for (var i = 0; i < scores.length; i++) {
