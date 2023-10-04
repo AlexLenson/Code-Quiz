@@ -56,6 +56,8 @@ var scoreEl = document.querySelector("#score");
 var submitBtn = document.querySelector("#submit-btn");
 var initialsInput = document.querySelector("#initials");
 var resultsFooterEL = document.querySelector("#results-footer");
+var goBackBtn = document.querySelector("#go-back-btn");
+
 
 
 // Loads questions page and set timer
@@ -172,6 +174,7 @@ function storeHighscores() {
         displayNoBlanksMessage();
     } else {
         // displaySubmittedMessage();
+        initialsInput.value = "";
         var player = {
             initials: initials,
             score: score
@@ -230,3 +233,8 @@ submitBtn.addEventListener("click", function(event) {
     storeHighscores();
 });
 
+goBackBtn.addEventListener("click", function(event) {
+    count = 0;
+    timeLeft = 60;
+    loadQuestionsPage();
+});
