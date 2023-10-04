@@ -58,7 +58,7 @@ var initialsInput = document.querySelector("#initials");
 var resultsFooterEL = document.querySelector("#results-footer");
 var goBackBtn = document.querySelector("#go-back-btn");
 var highscoresListEl = document.querySelector("#highscores-list");
-
+var clearHighscoresBtn = document.querySelector("#clear-highscores-btn");
 
 
 // Loads questions page and set timer
@@ -268,3 +268,9 @@ goBackBtn.addEventListener("click", function(event) {
     timeLeft = 60;
     loadQuestionsPage();
 });
+
+clearHighscoresBtn.addEventListener("click", function(event) {
+    highscoresListEl.innerHTML = "";
+    localStorage.clear();
+    scores = [];
+})
